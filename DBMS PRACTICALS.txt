@@ -1,4 +1,4 @@
-practicle 2:
+practicle : 2
 
 1.select * from p where p_city='London'
 
@@ -10,7 +10,7 @@ practicle 2:
 
 5.select * from p where weight !=(select weight from p order by weight desc limit 1) ORDER BY weight DESC LIMIT 1;
 
-practicle 3:
+practicle : 3
 
 6.SELECT SP.sno , SP.qty FROM sp,p WHERE p.pno=sp.pno AND p.weight=(SELECT p.weight FROM p ORDER BY weight DESC LIMIT 1);
 
@@ -22,7 +22,17 @@ practicle 3:
 
 10.SELECT SUM(sp.qty) as qty FROM p,sp WHERE p.pno=sp.pno GROUP BY sp.pno;
 
+Practicle : 4
+
 11.SELECT p.pname,SUM(sp.qty) as qty FROM p,sp WHERE p.pno=sp.pno GROUP BY sp.pno;
 
+12.SELECT s.sname, SUM(qty) as Total_Qty FROM s,sp WHERE s.sno=sp.sno AND sp.sno<'s4' GROUP BY sp.sno;
+
+13.SELECT s.sname, SUM(sp.qty) as Total_Qty FROM s,sp WHERE s.sno=sp.sno AND s.s_status=20 GROUP BY sp.sno;
+
+Practicle : 5
+
+ - CREATE TABLE Dept(Dept_Id int PRIMARY KEY, Dept_name varchar(35), Dept_location varchar(50));
+ - CREATE TABLE Emp(Emp_Id int PRIMARY KEY, Emp_name varchar(35), Emp_Dept_Id int, Emp_boss_id int,Emp_salary LONGTEXT, FOREIGN KEY(Emp_Dept_Id) REFERENCES dept(Dept_Id));
 
 
