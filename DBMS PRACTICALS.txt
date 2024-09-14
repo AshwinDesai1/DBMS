@@ -46,6 +46,6 @@ Practical 7 :
 
 temp - SELECT emp.Emp_name,dept.Dept_name,emp1.Emp_name as Boss_name, dept1.Dept_name as Boss_Dept_name 
 from emp,dept, emp as emp1,dept as dept1 
-where emp.Emp_Dept_Id=dept.Dept_id 
+where dept.Dept_id =emp.Emp_Dept_Id
 and emp1.Emp_id=emp.Emp_boss_id
 and dept1.Dept_id=emp.Emp_Dept_Id;
