@@ -1,0 +1,19 @@
+CREATE TRIGGER sum BEFORE INSERT ON account
+	   FOR EACH ROW SET @sum=@sum+ NEW.amount;
+       
+CREATE TRIGGER transaction BEFORE INSERT ON account
+	   FOR EACH ROW PRECEDES sum
+       SET
+       @deposits = @deposits+IF(NEW.amount>0,NEW.amount,0),
+       @withdrawls=@withdrawls+IF(NEW.amount<0,-NEW.amount,0);
+
+SET @sum=0;
+SET @deposits=0;
+SET @withdrawls=0;
+
+INSERT INTO account VALUES(137,1400.00),
+			  (138,2000.00),
+                          (139,-1000.00);
+SELECT @deposits AS "Deposit Amt",
+       @withdrawls AS "Withdrawls Amt",
+       @sum AS "Total Amt";
